@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="Food_Waste_Management.css">
+    <style>   
+        body { 
+            font-family: Calibri, Helvetica, sans-serif; 
+            font-style: normal;
+            color: white;
+            background-color: #222327;
+            text-align: left;
+        }
+        .container {
+            width: 360px;
+            height: auto; /* Adjusted to fit content */
+            background: black;
+            color: #29fd53;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            border-radius: 5%;
+            padding: 20px; /* Adjusted padding for better spacing */
+        }
+        input {
+            height: 40px;
+            width: 90%; /* Adjusted to fit the container width */
+            border-radius: 9px;
+            margin-bottom: 15px; /* Added margin for spacing */
+            padding: 0 10px; /* Added padding for better text alignment */
+        }
+        button {
+            background-color: #4bff6f;
+            color: rgb(0, 0, 0);
+            border-style: none;
+            height: 40px;
+            width: 100%; /* Adjusted to fit the container width */
+            border-radius: 9px;
+            font-size: 15px;
+        }
+        a {
+            color: #29fd53;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>    
+</head>
+<body>
+    <div class="container">
+        <form id="signup-form">
+            <center><h1>Sign Up</h1></center>
+            <input type="text" placeholder="Enter Username" name="username" required>
+            <input type="email" placeholder="Enter Email ID" name="email" required>
+            <input type="password" placeholder="Enter Password" name="password" required>  
+            <button type="submit"><strong>Sign Up</strong></button>
+            <center><p>Already a user? <a href="login.html">LOG IN</a></p></center>
+        </form>
+    </div>
+    <script type="text/javascript">
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Collect user input
+            const username = document.querySelector('input[name="username"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+
+            // Store user details in localStorage
+            localStorage.setItem('userUsername', username);
+            localStorage.setItem('userPassword', password);
+
+            // Redirect to login page
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

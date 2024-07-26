@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="Food_Waste_Management.css">
+    <style>   
+        body { 
+            font-family: Calibri, Helvetica, sans-serif; 
+            font-style: normal;
+            color: white;
+            background-color: #222327;
+            text-align: left;
+        }
+        .container {
+            width: 360px;
+            height: auto;
+            background: black;
+            color: #29fd53;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            border-radius: 5%;
+            padding: 20px;
+        }
+        input {
+            height: 40px;
+            width: 93%;
+            border-radius: 9px;
+            margin-bottom: 15px;
+            padding: 0 10px;
+        }
+        button {
+            background-color: #4bff6f;
+            color: rgb(0, 0, 0);
+            border-style: none;
+            height: 40px;
+            width: 100%;
+            border-radius: 9px;
+            font-size: 15px;
+        }
+        .error {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: red;
+        }
+        .success {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: green;
+        }
+        a {
+            color: #29fd53;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+            margin-right: 8px;
+        }
+        .error {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: red;
+        }
+        .success {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: green;
+        }
+    </style>    
+</head>
+<body>
+    <div class="container">
+        <p class="error"></p>
+        <p class="success"></p>
+        <form id="login-form">
+            <center><h1>Log In</h1></center>
+            <input type="text" id="loginusername" placeholder="Enter Username" name="username" required>
+            <input type="password" id="loginpass" placeholder="Enter Password" name="password" required>  
+            <input type="checkbox"> Remember me  
+            <button type="submit"><strong>Login</strong></button>
+            <div class="Forgot_password" style="text-align: right">
+                <a href="Forgot_password.html">Forgot Password?</a>
+            </div>
+            <center><p>Need an account? <a href="signup.html">SIGNUP</a></p></center>
+        </form>
+    </div>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Collect user input
+            const username = document.getElementById('loginusername').value;
+            const password = document.getElementById('loginpass').value;
+
+            // Retrieve stored user details from localStorage
+            const storedUsername = localStorage.getItem('userUsername');
+            const storedPassword = localStorage.getItem('userPassword');
+
+            // Check if entered credentials match stored credentials
+            if (username === storedUsername && password === storedPassword) {
+                window.location.href = 'thankyou.html'; // Redirect to thankyou.html
+            } else {
+                document.querySelector('.error').innerText = 'Invalid Username or Password!';
+            }
+        });
+    </script>
+</body>
+</html>
