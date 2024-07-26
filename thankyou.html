@@ -23,9 +23,17 @@
 </head>
 <body>
     <div class="bgcont d-flex flex-column justify-content-center">
-        <button class="btn btn-success">
+        <button class="btn btn-success" id="thank-you-message">
             Thank You! - This Page is Under Construction
         </button>
     </div> 
+    <script>
+        // Retrieve username from localStorage
+        const username = localStorage.getItem('userUsername');
+        if (username) {
+            // Update button text with the username
+            document.getElementById('thank-you-message').textContent = `Welcome ${username}! - This Page is Under Construction`;
+        }
+    </script>
 </body>
 </html>
