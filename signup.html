@@ -49,6 +49,20 @@
         a:hover {
             text-decoration: underline;
         }
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 20px;
+            top: 43%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .password-input {
+            width: 85%; /* Specific width for the password input */
+        }
     </style>    
 </head>
 <body>
@@ -57,12 +71,22 @@
             <center><h1>Sign Up</h1></center>
             <input type="text" placeholder="Enter Username" name="username" required>
             <input type="email" placeholder="Enter Email ID" name="email" required>
-            <input type="password" placeholder="Enter Password" name="password" required>  
+            <div class="password-container">
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <span class="toggle-password">👁️</span>
+            </div>
             <button type="submit"><strong>Sign Up</strong></button>
             <center><p>Already a user? <a href="login.html">LOG IN</a></p></center>
         </form>
     </div>
     <script type="text/javascript">
+        document.querySelector('.toggle-password').addEventListener('click', function (e) {
+            const passwordInput = document.querySelector('input[name="password"]');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
+        });
+
         document.getElementById('signup-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
