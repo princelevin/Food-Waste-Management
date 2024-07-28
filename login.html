@@ -28,7 +28,7 @@
         }
         input {
             height: 40px;
-            width: 93%;
+            width: 90%;
             border-radius: 9px;
             margin-bottom: 15px;
             padding: 0 10px;
@@ -64,15 +64,16 @@
             height: 15px;
             margin-right: 8px;
         }
-        .error {
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            color: red;
+        .password-container {
+            position: relative;
+            width: 100%;
         }
-        .success {
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            color: green;
+        .toggle-password {
+            position: absolute;
+            right: 20px;
+            top: 43%;
+            transform: translateY(-50%);
+            cursor: pointer;
         }
     </style>    
 </head>
@@ -83,7 +84,10 @@
         <form id="login-form">
             <center><h1>Log In</h1></center>
             <input type="text" id="loginusername" placeholder="Enter Username" name="username" required>
-            <input type="password" id="loginpass" placeholder="Enter Password" name="password" required>  
+            <div class="password-container">
+                <input type="password" id="loginpass" placeholder="Enter Password" name="password" required>
+                <span class="toggle-password">👁️</span>
+            </div>
             <input type="checkbox"> Remember me  
             <button type="submit"><strong>Login</strong></button>
             <div class="Forgot_password" style="text-align: right">
@@ -93,6 +97,13 @@
         </form>
     </div>
     <script>
+        document.querySelector('.toggle-password').addEventListener('click', function () {
+            const passwordInput = document.getElementById('loginpass');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
+        });
+
         document.getElementById('login-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
