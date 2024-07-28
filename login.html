@@ -71,7 +71,7 @@
         .toggle-password {
             position: absolute;
             right: 20px;
-            top: 43%;
+            top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
         }
@@ -105,7 +105,7 @@
         });
 
         document.getElementById('login-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent default form submission
 
             // Collect user input
             const username = document.getElementById('loginusername').value;
